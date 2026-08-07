@@ -1,5 +1,12 @@
 # Projects
 
+- [orka](#orka) - LLM coding agents in isolated containers
+- [pi extensions and skills](#pi-extensions-and-skills) - client additions and
+  agent behaviour for pi
+- [recall](#recall) - shell history in SQLite
+- [xorc](#xorc) - LLM-generated text adventure
+- [Other tools](#other-tools) - Linear client, tmux attach, markdown navigation
+
 ## orka
 
 [getorka.dev](https://getorka.dev) - run LLM coding agents in isolated
