@@ -1,11 +1,28 @@
 # Projects
 
+- [orbit](#orbit) - 2D orbital mechanics sim and trajectory planner
 - [orka](#orka) - LLM coding agents in isolated containers
 - [pi extensions and skills](#pi-extensions-and-skills) - client additions and
   agent behaviour for pi
 - [recall](#recall) - shell history in SQLite
 - [xorc](#xorc) - LLM-generated text adventure
 - [Other tools](#other-tools) - Linear client, tmux attach, markdown navigation
+
+## orbit
+
+[orbit.kzsh.dev](https://orbit.kzsh.dev) - a 2D orbital-mechanics prototype.
+Trajectories are planned and drawn, never integrated per frame.
+
+Ships move on real Keplerian conics. Plot a course by hand with manoeuvre nodes,
+or hand a target to the intercept solver and set a flight-time budget, a delta-v
+cap, and how much mission time is worth against propellant; it returns an
+intercept, a rendezvous, or a capture orbit as a set of burns you can inspect and
+adjust before they happen. Targets outside Earth's sphere of influence are solved
+about the Sun, so the plan reads as parking orbit, escape, cruise, capture. A
+look-ahead scrub bar runs forward from now through the predicted future, and the
+encounter list reports every close approach to the target with its closing speed.
+
+Rust, running natively and in the browser through wasm. Closed source.
 
 ## orka
 
