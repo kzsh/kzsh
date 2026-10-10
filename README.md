@@ -5,6 +5,7 @@
 - [pi extensions and skills](#pi-extensions-and-skills) - client additions and
   agent behaviour for pi
 - [recall](#recall) - shell history in SQLite
+- [space](#space) - workspace sets for Sway
 - [xorc](#xorc) - LLM-generated text adventure
 - [Other tools](#other-tools) - Linear client, tmux attach, markdown navigation
 
@@ -85,6 +86,22 @@ for a picker over the current directory's successful commands. `recall sql`
 streams arbitrary statements against the schema when the filters are not enough.
 
 Rust, with a bundled SQLite trimmed to what the tool calls.
+
+## space
+
+[github.com/kzsh/space-daemon](https://github.com/kzsh/space-daemon) - workspace
+sets for Sway. Sway gives every workspace one flat namespace; `space` groups
+them into named sets, gives each monitor its own set, and switches a monitor's
+whole set at once.
+
+A workspace is named `<key>(<set>)`, so `Q(main)` and `Q(work)` are the same key
+in two sets. Icing a set records its window tree and parks the windows out of the
+way; thawing rebuilds the layout, so a set can sit frozen with no monitor showing
+it. Monitors are keyed by make, model and serial, so one keeps its set across
+ports. A pinned window belongs to a key rather than a set, and follows you into
+whichever set is on screen.
+
+Rust over `swayipc`, with wofi for the pickers.
 
 ## xorc
 
