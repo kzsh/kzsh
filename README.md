@@ -2,11 +2,11 @@
 
 - [orbit](#orbit) - 2D orbital mechanics sim and trajectory planner
 - [orka](#orka) - LLM coding agents in isolated containers
-- [pi extensions and skills](#pi-extensions-and-skills) - client additions and
-  agent behaviour for pi
 - [recall](#recall) - shell history in SQLite
 - [space](#space) - workspace sets for Sway
 - [xorc](#xorc) - LLM-generated text adventure
+- [pi extensions and skills](#pi-extensions-and-skills) - client additions and
+  agent behaviour for pi
 - [Other tools](#other-tools) - Linear client, tmux attach, markdown navigation
 
 ## orbit
@@ -50,29 +50,6 @@ Alpha, and predominantly vibe-coded. The source is currently closed;
 and [orka.nvim](https://github.com/kzsh/orka.nvim) runs `orka -f
 <current-buffer>` in a Neovim terminal split.
 
-## pi extensions and skills
-
-Additions to the [pi](https://pi.earendil.works) coding agent, in two kinds.
-
-Extensions change the client. [pi-burn](https://github.com/kzsh/pi-burn) tracks
-cost per request as context grows: a status-bar breakdown by token type, a
-braille sparkline of the session's history, a `/burn` report, and a
-`--burn-budget` that colours the graph as spend approaches the limit.
-[pi-vi](https://github.com/kzsh/pi-vi) puts vim modal editing in the input
-editor, with normal and insert modes, counts, operators, and motions.
-[pi-alt](https://github.com/kzsh/pi-alt) adds Alt+Enter as a newline shortcut.
-
-Skills change the agent's behaviour. Each is a single `SKILL.md`, loaded when the
-task matches its description:
-[git](https://github.com/kzsh/skill-git),
-[markdown](https://github.com/kzsh/skill-markdown),
-[python](https://github.com/kzsh/skill-python),
-[rust](https://github.com/kzsh/skill-rust),
-[typescript](https://github.com/kzsh/skill-typescript), and
-[partial-stage](https://github.com/kzsh/skill-partial-stage), which stages
-selected changes within a file when `git add -p` cannot split a hunk finely
-enough.
-
 ## recall
 
 [github.com/kzsh/recall](https://github.com/kzsh/recall) - record shell commands
@@ -115,6 +92,29 @@ the distance travelled, and the time of day. Rooms remember what happened in
 them; actions can change one permanently, create items, or reveal a passage.
 Compass directions and verbs like `take` and `inspect` are parsed directly;
 anything else is either mapped onto an existing action or interpreted freeform.
+
+## pi extensions and skills
+
+Additions to the [pi](https://pi.earendil.works) coding agent, in two kinds.
+
+Extensions change the client. [pi-burn](https://github.com/kzsh/pi-burn) tracks
+cost per request as context grows: a status-bar breakdown by token type, a
+braille sparkline of the session's history, a `/burn` report, and a
+`--burn-budget` that colours the graph as spend approaches the limit.
+[pi-vi](https://github.com/kzsh/pi-vi) puts vim modal editing in the input
+editor, with normal and insert modes, counts, operators, and motions.
+[pi-alt](https://github.com/kzsh/pi-alt) adds Alt+Enter as a newline shortcut.
+
+Skills change the agent's behaviour. Each is a single `SKILL.md`, loaded when the
+task matches its description:
+[git](https://github.com/kzsh/skill-git),
+[markdown](https://github.com/kzsh/skill-markdown),
+[python](https://github.com/kzsh/skill-python),
+[rust](https://github.com/kzsh/skill-rust),
+[typescript](https://github.com/kzsh/skill-typescript), and
+[partial-stage](https://github.com/kzsh/skill-partial-stage), which stages
+selected changes within a file when `git add -p` cannot split a hunk finely
+enough.
 
 ## Other tools
 
