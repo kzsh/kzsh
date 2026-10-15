@@ -5,6 +5,7 @@
 - [recall](#recall) - shell history in SQLite
 - [space](#space) - workspace sets for Sway
 - [xorc](#xorc) - LLM-generated text adventure
+- [gh-ff](#gh-ff) - GitHub operations from reviewable YAML files
 - [pi extensions and skills](#pi-extensions-and-skills) - client additions and
   agent behaviour for pi
 - [Other tools](#other-tools) - Linear client, tmux attach, markdown navigation
@@ -12,28 +13,22 @@
 ## orbit
 
 [orbit.kzsh.dev](https://orbit.kzsh.dev) - a 2D orbital-mechanics prototype.
-Trajectories are planned and drawn, never integrated per frame.
+Ships move on Keplerian conics, solved in closed form and drawn ahead of time.
 
-Ships move on real Keplerian conics. Plot a course by hand with manoeuvre nodes,
-or hand a target to the intercept solver and set a flight-time budget, a delta-v
-cap, and how much mission time is worth against propellant; it returns an
-intercept, a rendezvous, or a capture orbit as a set of burns you can inspect and
-adjust before they happen. Targets outside Earth's sphere of influence are solved
-about the Sun, so the plan reads as parking orbit, escape, cruise, capture. A
-look-ahead scrub bar runs forward from now through the predicted future, and the
-encounter list reports every close approach to the target with its closing speed.
+Plot a course by hand with manoeuvre nodes. A look-ahead scrub bar runs forward
+from now through the predicted future, and the encounter list reports every close
+approach to the target with its closing speed.
 
-Rust, running natively and in the browser through wasm. Closed source.
+Rust, running natively and in the browser through wasm.
 
 ## orka
 
 [getorka.dev](https://getorka.dev) - run LLM coding agents in isolated
 containers. Mount what they need; nothing else is reachable.
 
-A session sees the paths you mount and nothing else: not `$HOME`, no credentials
-from the environment, no shell history, no write access to `/`. Files inside a
-mounted project can be shadowed with empty read-only stubs, so mounting a
-repository does not have to mean handing over its `.env`.
+A session sees the paths you mount and nothing else. Files inside a mounted
+project can be shadowed with empty read-only stubs, so mounting a repository
+keeps its `.env` out of reach.
 
 Toolchain paths and environment variables are reused through named presets.
 `orka --preset rust` mounts the Rust paths; presets stack when a project needs
@@ -45,9 +40,9 @@ more than one, and always-on presets live in `config.yaml`.
 | Engines | Docker, Podman, Apple `container` (alpha), bubblewrap (alpha) |
 | Platforms | Linux (alpha), macOS (alpha) |
 
-Alpha, and predominantly vibe-coded. The source is currently closed;
-[kzsh/orka](https://github.com/kzsh/orka) carries the docs and release binaries,
-and [orka.nvim](https://github.com/kzsh/orka.nvim) runs `orka -f
+Alpha, and predominantly vibe-coded. Open source at
+[kzsh/orka](https://github.com/kzsh/orka), which also carries the docs and
+release binaries; [orka.nvim](https://github.com/kzsh/orka.nvim) runs `orka -f
 <current-buffer>` in a Neovim terminal split.
 
 ## recall
@@ -92,6 +87,22 @@ the distance travelled, and the time of day. Rooms remember what happened in
 them; actions can change one permanently, create items, or reveal a passage.
 Compass directions and verbs like `take` and `inspect` are parsed directly;
 anything else is either mapped onto an existing action or interpreted freeform.
+
+## gh-ff
+
+[github.com/kzsh/gh-ff](https://github.com/kzsh/gh-ff) - execute GitHub
+operations from reviewable YAML files. An agent writes the file, you read it,
+then `gh-ff` runs it through the `gh` CLI.
+
+Two layers. Ops entries map one-to-one onto `gh` invocations and run in order,
+stopping at the first failure; `cmd: api` reaches any REST or GraphQL endpoint.
+Specs are task-shaped documents compiled to ops - currently `review`, a whole PR
+review submitted as one atomic request, with server-assigned ids written back so
+resubmitting edits the review in place. `--read-only` audits every compiled
+command before the first one runs and aborts, naming the offenders, if any would
+mutate; unrecognized commands count as mutations.
+
+Go, with the ops format published as an agent skill.
 
 ## pi extensions and skills
 
